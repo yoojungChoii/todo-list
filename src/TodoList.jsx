@@ -1,8 +1,8 @@
-function TodoList({ toDo }) {
+function TodoList({ todo }) {
   return (
     <ul>
-      {toDo.map(list => (
-        <li>{list}</li>
+      {todo.map(list => (
+        <li key={list}>{list}</li>
       ))}
     </ul>
   );
