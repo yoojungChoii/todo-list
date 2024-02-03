@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import TodoList from './TodoList';
 
-// javascript - callback 다시 공부하기!
-// setState
-// props 넘겨주고 받는거
+// 버튼을 분리하고 싶었는데 분리한 컴포넌트에서 타입을 정확히 지정하지 않았더니 오류가 남
+
+// javascript - callback 다시 공부하기! v
+// setState v
+// props 넘겨주고 받는거 v
 
 // 삭제 버튼 -> 누르면 투두리스트가 삭제! 하나하나
 
 // React로 데이터 다루기 강좌듣기
-// useState 기본값이 없으면 undefined가 들어감
 function TodoInput() {
+  // useState 기본값이 없으면 undefined가 들어감
   const [inputValue, setInputValue] = useState('');
   const [todo, setTodo] = useState([]);
 
@@ -36,7 +38,7 @@ function TodoInput() {
         />
         <button type="submit">등록</button>
       </form>
-      <TodoList todo={todo} />
+      <TodoList todo={todo} setTodo={setTodo} />
     </>
   );
 }
