@@ -50,3 +50,9 @@ function TodoInput() {
 // `
 
 export default TodoInput;
+
+// TODO LIST 요청을 보낸다
+// DATA (TODO LIST)를 받아와서 렌더링!
+// useEffect -> 언제 실행되는지, useEffect 디펜던시
+
+// React로 데이터 다루기 - 데이터 가져오기
