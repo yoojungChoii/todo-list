@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TodoList from './TodoList';
+import GetTodolist from './GetTodolist';
 
 // 버튼을 분리하고 싶었는데 분리한 컴포넌트에서 타입을 정확히 지정하지 않았더니 오류가 남
 
@@ -14,6 +15,11 @@ function TodoInput() {
   // useState 기본값이 없으면 undefined가 들어감
   const [inputValue, setInputValue] = useState('');
   const [todo, setTodo] = useState([]);
+
+  useEffect(() => {
+    const { title } = GetTodolist(setTodo);
+    setTodo(title);
+  }, []);
 
   const handleInput = e => {
     setInputValue(e.target.value);
@@ -55,4 +61,4 @@ export default TodoInput;
 // DATA (TODO LIST)를 받아와서 렌더링!
 // useEffect -> 언제 실행되는지, useEffect 디펜던시
 
-// React로 데이터 다루기 - 데이터 가져오기
+// React로 데이터 다루기 - 데이터 가져오기 v
