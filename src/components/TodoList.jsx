@@ -6,10 +6,11 @@ function TodoList({ todo, setTodo }) {
   };
 
   return (
+    // 리엑트에서 key가 필요한 이유
     <ul>
-      {todo.map((list, index) => (
-        <li key={list}>
-          {list}
+      {todo.map((t, index) => (
+        <li key={t.id}>
+          {t.title}
           <button type="button" onClick={() => removeTodo(index)}>
             삭제
           </button>
