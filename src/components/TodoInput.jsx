@@ -16,9 +16,12 @@ function TodoInput() {
   const [inputValue, setInputValue] = useState('');
   const [todo, setTodo] = useState([]);
 
+  // GetTodolist의 body에서 title 내용만 뽑아서 title에 담고
+  // 그 title을 todo에 set 하고싶었는데..
   useEffect(() => {
-    const { title } = GetTodolist(setTodo);
-    setTodo(title);
+    const { title } = GetTodolist();
+    setTodo([title]);
+    // 랜더링 될 때 한 번 실행
   }, []);
 
   const handleInput = e => {
