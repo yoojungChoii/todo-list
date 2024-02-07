@@ -1,7 +1,8 @@
 import { http, HttpResponse } from 'msw';
 
-const getTodos = http.get('/todos', () =>
-  HttpResponse.json(
+const getTodos = http.get('/todos', () => {
+  console.log('dd');
+  return HttpResponse.json(
     [
       {
         id: 1,
@@ -25,8 +26,8 @@ const getTodos = http.get('/todos', () =>
       },
     ],
     { status: 200 },
-  ),
-);
+  );
+});
 
 const handlers = [getTodos];
 
