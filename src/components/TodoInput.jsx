@@ -23,7 +23,7 @@ function TodoInput() {
     // Promise - 정말 중요함!!
     // 비동기 처리하는 부분!!
 
-    //await은 async 함수 안에서만 사용 가능
+    // await은 async 함수 안에서만 사용 가능
     async function fetchTodo() {
       // promise 객체를 반환하는 함수를 사용할 때도 await을 붙여서 기다려줘야함
       const getTodo = await GetTodolist();
