@@ -69,3 +69,10 @@ export default TodoInput;
 // useEffect -> 언제 실행되는지, useEffect 디펜던시
 
 // React로 데이터 다루기 - 데이터 가져오기 v
+
+// todos/:id   , method: put , { title: '수정내용' } -> response 예시: { id: 1, title: '수정내용' } ->이거를 상태값에 반영
+// todos/:id   , method: delete -> response -> {id: 1}  -> 이거를 제외한 값으로 상태 반영
+
+// 수정하거나 삭제하면, 서버로 요청을 보내고! 결과를 렌더링에 반영
+
+// 화요일 5시
