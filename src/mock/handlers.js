@@ -27,15 +27,19 @@ const getTodos = http.get('/todos', () =>
   HttpResponse.json(data, { status: 200 }),
 );
 
-const putTodos = http.get('/todos', () => HttpResponse.json());
-
 const deleteTodo = http.delete('/todos/:id', ({ params }) => {
   data = data.filter(d => d.id !== Number(params.id));
   return HttpResponse.json({ id: Number(params.id) }, { status: 202 });
 });
-// const deleteTodo = http.delete('/todos/:id', () => {});
 
-const handlers = [getTodos, putTodos, deleteTodo];
+const putTodo = http.put('/todos/:id', async ({ params, request }) => {
+  const todo = data.find(d => d.id === Number(params.id));
+  const newTodo = await request.json();
+  todo.title = newTodo.title;
+  return HttpResponse.json({ ...todo }, { status: 201 });
+});
+
+const handlers = [getTodos, putTodo, deleteTodo];
 
 export default handlers;
 
