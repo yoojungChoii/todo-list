@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import PutTodolist from './PutTodolist';
+import DeleteTodolist from './DeleteTodolist';
 
 function TodoList({ todo, setTodo }) {
   // 현재 수정중인 요소에 id를 저장할 값
   const [editingId, setEditingId] = useState(null);
   const [editValue, setEditValue] = useState('');
 
-  const handleremoveTodo = index => {
+  const handleremoveTodo = (index, t) => {
     // _는 해당 변수 사용하지 않는다는 뜻
     // 현재 요소의 인덱스가 index와 같지 않을 때 삭제
     setTodo(todo.filter((_, i) => i !== index));
-    PutTodolist(todo);
+    DeleteTodolist(t.id);
   };
 
   // 수정한 값을 editValue에 반영
@@ -43,7 +44,7 @@ function TodoList({ todo, setTodo }) {
             <button type="button" onClick={() => handleEditInput(t)}>
               수정
             </button>
-            <button type="button" onClick={() => handleremoveTodo(index)}>
+            <button type="button" onClick={() => handleremoveTodo(index, t)}>
               삭제
             </button>
           </li>

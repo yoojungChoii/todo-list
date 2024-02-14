@@ -1,7 +1,6 @@
-export default async function DeleteTodolist(id, editValue) {
+export default async function DeleteTodolist(id) {
   const response = await fetch(`/todos/${id}`, {
     method: 'DELETE',
-    id: { id },
   });
   const result = await response.json();
   return result;
