@@ -8,10 +8,14 @@ function TodoComponent() {
     setTodos([...todos, newTodo]);
   };
 
+  const deleteTodo = updatedTodos => {
+    setTodos(updatedTodos);
+  };
+
   return (
     <>
       <TodoInput onAddTodo={addTodo} />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList deleteTodo={deleteTodo} todos={todos} />
     </>
   );
 }
