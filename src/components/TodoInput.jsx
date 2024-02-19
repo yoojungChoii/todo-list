@@ -12,7 +12,7 @@
 
 import { useState } from 'react';
 
-function TodoInput({ onAddTodo }) {
+function TodoInput({ setTodos }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleInput = e => {
@@ -21,7 +21,7 @@ function TodoInput({ onAddTodo }) {
 
   const handleTodolist = e => {
     e.preventDefault();
-    onAddTodo(inputValue);
+    setTodos(prevTodos => [...prevTodos, inputValue]);
     setInputValue('');
   };
 
