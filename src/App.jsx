@@ -1,8 +1,8 @@
 import './App.css';
-import TodoInput from './components/TodoInput';
+import TodoComponent from './components/TodoCompoment';
 
 function App() {
-  return <TodoInput />;
+  return <TodoComponent />;
 }
 
 export default App;

@@ -10,7 +10,28 @@
 // await은 async 함수 안에서만 사용 가능
 // onSubmit 기본 기능이 페이지 새로고침이니까 막아줘야함
 
-function TodoInput() {}
+import { useState } from 'react';
+
+function TodoInput({ onAddTodo }) {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInput = e => {
+    setInputValue(e.target.value);
+  };
+
+  const handleTodolist = e => {
+    e.preventDefault();
+    onAddTodo(inputValue);
+    setInputValue('');
+  };
+
+  return (
+    <form onSubmit={handleTodolist}>
+      <input value={inputValue} onChange={handleInput} />
+      <button type="submit">입력</button>
+    </form>
+  );
+}
 
 export default TodoInput;
 
