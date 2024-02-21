@@ -11,6 +11,7 @@
 // onSubmit 기본 기능이 페이지 새로고침이니까 막아줘야함
 
 import { useState } from 'react';
+import PostTodolist from './POSTTodolist';
 
 function TodoInput({ setTodos, todos }) {
   const [inputValue, setInputValue] = useState('');
@@ -19,12 +20,11 @@ function TodoInput({ setTodos, todos }) {
     setInputValue(e.target.value);
   };
 
-  const handleTodolist = e => {
+  const handleTodolist = async e => {
     e.preventDefault();
-    setTodos(prevTodos => [
-      ...prevTodos,
-      { id: todos.length + 1, title: inputValue },
-    ]);
+    const newTodo = { id: todos.length + 1, title: inputValue };
+    setTodos(prevTodos => [...prevTodos, newTodo]);
+    await PostTodolist(newTodo.id, newTodo.title);
     setInputValue('');
   };
 
