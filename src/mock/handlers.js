@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import { http, HttpResponse } from 'msw';
 
 let data = [
@@ -39,7 +40,18 @@ const putTodo = http.put('/todos/:id', async ({ params, request }) => {
   return HttpResponse.json({ ...todo }, { status: 201 });
 });
 
-const handlers = [getTodos, putTodo, deleteTodo];
+let id = 10;
+const postTodo = http.post('/todos', async ({ request }) => {
+  const newTodo = await request.json();
+  const todo = {
+    id: id++,
+    title: newTodo.title,
+  };
+  data.push(todo);
+  return HttpResponse.json(todo, { status: 201 });
+});
+
+const handlers = [getTodos, putTodo, deleteTodo, postTodo];
 
 export default handlers;
 

@@ -25,6 +25,7 @@ function TodoList() {
     fetchTodo();
   }, []);
 
+  // 수정 버튼 클릭 -> 인풋창, 확인 버튼, 취소 버튼 -> 확인 누르면 서버로 전송하고, 수정된 투두 리스트 반영
   return (
     <>
       <TodoInput todos={todos} setTodos={setTodos} />

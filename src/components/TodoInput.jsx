@@ -13,24 +13,24 @@
 import { useState } from 'react';
 import PostTodolist from './POSTTodolist';
 
-function TodoInput({ setTodos, todos }) {
+function TodoInput({ setTodos }) {
   const [inputValue, setInputValue] = useState('');
 
-  const handleInput = e => {
+  const handleChangeInput = e => {
     setInputValue(e.target.value);
   };
 
-  const handleTodolist = async e => {
+  const handleSubmitTodolist = async e => {
     e.preventDefault();
-    const newTodo = { id: todos.length + 1, title: inputValue };
+
+    const newTodo = await PostTodolist(inputValue);
     setTodos(prevTodos => [...prevTodos, newTodo]);
-    await PostTodolist(newTodo.id, newTodo.title);
     setInputValue('');
   };
 
   return (
-    <form onSubmit={handleTodolist}>
-      <input value={inputValue} onChange={handleInput} />
+    <form onSubmit={handleSubmitTodolist}>
+      <input value={inputValue} onChange={handleChangeInput} />
       <button type="submit">입력</button>
     </form>
   );
@@ -46,6 +46,7 @@ export default TodoInput;
 
 // todos/:id   , method: put , { title: '수정내용' } -> response 예시: { id: 1, title: '수정내용' } ->이거를 상태값에 반영
 // todos/:id   , method: delete -> response -> {id: 1}  -> 이거를 제외한 값으로 상태 반영
+// todos , method: post , {title: '내용' } -> response 예시: { id: 123, title: '내용' } ->이거를 상태값에 반영
 
 // 수정하거나 삭제하면, 서버로 요청을 보내고! 결과를 렌더링에 반영
 
