@@ -16,6 +16,13 @@ function TodoList() {
     // 비동기 함수를 사용할 때 await 붙이는 거 잊지말기!!!!
     await DeleteTodolist(id);
   };
+  
+  const handleEditInput = 
+  const handleEditTodo = id => {
+    return (
+      <input value={handleEditInput} />
+    );
+  };
 
   useEffect(() => {
     async function fetchTodo() {
@@ -33,8 +40,11 @@ function TodoList() {
         {todos.map(todo => (
           <li key={todo.id}>
             {todo.title}
-            <button type="submit" onClick={() => handleDeleteTodo(todo.id)}>
+            <button type="botton" onClick={() => handleDeleteTodo(todo.id)}>
               삭제
+            </button>
+            <button type="botton" onClick={() => handleEditTodo(todo.id)}>
+              수정
             </button>
           </li>
         ))}
